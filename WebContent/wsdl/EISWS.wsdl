@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://ws.bidashboard.indosat.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://ws.bidashboard.indosat.com" xmlns:intf="http://ws.bidashboard.indosat.com" xmlns:tns1="http://entity" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://ws.bidashboard.indosat.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://entity"/>
+   <element name="helloWorld">
+    <complexType/>
+   </element>
+   <element name="helloWorldResponse">
+    <complexType>
+     <sequence>
+      <element name="helloWorldReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="geTableauRemainingLicense">
+    <complexType/>
+   </element>
+   <element name="geTableauRemainingLicenseResponse">
+    <complexType>
+     <sequence>
+      <element name="geTableauRemainingLicenseReturn" type="tns1:TableauRemainingLicense"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://entity" xmlns="http://www.w3.org/2001/XMLSchema">
+   <complexType name="TableauRemainingLicense">
+    <sequence>
+     <element name="availableUsers" type="xsd:int"/>
+     <element name="userLicensedSize" type="xsd:int"/>
+     <element name="userUnlicensedSize" type="xsd:int"/>
+    </sequence>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="helloWorldResponse">
+
+      <wsdl:part element="impl:helloWorldResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="helloWorldRequest">
+
+      <wsdl:part element="impl:helloWorld" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="geTableauRemainingLicenseResponse">
+
+      <wsdl:part element="impl:geTableauRemainingLicenseResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="geTableauRemainingLicenseRequest">
+
+      <wsdl:part element="impl:geTableauRemainingLicense" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="EISWS">
+
+      <wsdl:operation name="helloWorld">
+
+         <wsdl:input message="impl:helloWorldRequest" name="helloWorldRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:helloWorldResponse" name="helloWorldResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="geTableauRemainingLicense">
+
+         <wsdl:input message="impl:geTableauRemainingLicenseRequest" name="geTableauRemainingLicenseRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:geTableauRemainingLicenseResponse" name="geTableauRemainingLicenseResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="EISWSSoapBinding" type="impl:EISWS">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="helloWorld">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="helloWorldRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="helloWorldResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="geTableauRemainingLicense">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="geTableauRemainingLicenseRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="geTableauRemainingLicenseResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="EISWSService">
+
+      <wsdl:port binding="impl:EISWSSoapBinding" name="EISWS">
+
+         <wsdlsoap:address location="http://localhost:8080/EIS-API/services/EISWS"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
